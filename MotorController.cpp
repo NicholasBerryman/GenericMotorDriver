@@ -1,15 +1,16 @@
 #include "MotorController.h"
 #include <Arduino.h>
 
-MotorController::MotorController(unsigned int forwardsPin, unsigned int backwardsPin){
+MotorController::MotorController(unsigned int forwardsPin, unsigned int backwardsPin, bool pin1IsDirection){
   this->forwardPin = forwardsPin;
   this->backwardPin = backwardsPin;
   pinMode(forwardPin, OUTPUT);
   pinMode(backwardPin, OUTPUT);
+  pin1Direction = pin1IsDirection;
 }
 
 MotorController::MotorController(unsigned int forwardPin, unsigned int backwardsPin, unsigned int enablePin) 
-  : MotorController::MotorController(forwardPin,backwardsPin)
+  : MotorController::MotorController(forwardPin,backwardsPin, false)
 {
   this->enablePin = enablePin;
   pinMode(enablePin, OUTPUT);
@@ -56,8 +57,14 @@ void MotorController::set(double powerPercent){
         digitalWrite(backwardPin, 0);
       }
       else{
-        analogWrite(forwardPin, 255*setValue);
-        analogWrite(backwardPin, 0);
+        if (!pin1Direction){
+          analogWrite(forwardPin, 255*setValue);
+          analogWrite(backwardPin, 0);
+        }
+        else{
+          digitalWrite(forwardPin, 1);
+          analogWrite(backwardPin, setValue);
+        }
       }
     }
     else if (setValue < 0){
@@ -66,8 +73,14 @@ void MotorController::set(double powerPercent){
         digitalWrite(backwardPin, 1);
       }
       else{
-        analogWrite(forwardPin, 0);
-        analogWrite(backwardPin, 255*-setValue);
+        if (!pin1Direction){
+          analogWrite(forwardPin, 0);
+          analogWrite(backwardPin, 255*-setValue);
+        }
+        else{
+          digitalWrite(forwardPin, 0);
+          analogWrite(backwardPin, setValue);
+        }
       }
     }
     else{
