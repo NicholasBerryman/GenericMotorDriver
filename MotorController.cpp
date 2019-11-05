@@ -58,7 +58,7 @@ void MotorController::set(double powerPercent){
       }
       else{
         if (!pin1Direction){
-          analogWrite(forwardPin, 255*setValue);
+          analogWrite(forwardPin, PWMRANGE*setValue);
           analogWrite(backwardPin, 0);
         }
         else{
@@ -75,7 +75,7 @@ void MotorController::set(double powerPercent){
       else{
         if (!pin1Direction){
           analogWrite(forwardPin, 0);
-          analogWrite(backwardPin, 255*-setValue);
+          analogWrite(backwardPin, PWMRANGE*-setValue);
         }
         else{
           digitalWrite(forwardPin, 0);
@@ -87,7 +87,7 @@ void MotorController::set(double powerPercent){
       digitalWrite(forwardPin,0);
       digitalWrite(backwardPin,0);
     }
-    if (enablePin >= 0) analogWrite(enablePin, 255*setValue);
+    if (enablePin >= 0) analogWrite(enablePin, PWMRANGE*setValue);
   }
   timeAtLastSet = millis();
 }
