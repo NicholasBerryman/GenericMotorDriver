@@ -1,10 +1,6 @@
 #include <Arduino.h>
 #include "MotorController.h"
 
-#ifndef PWMRANGE
-#define PWMRANGE 255
-#endif
-
 MotorController::MotorController(unsigned int forwardsPin, unsigned int backwardsPin, bool pin1IsDirection){
   this->forwardPin = forwardsPin;
   this->backwardPin = backwardsPin;

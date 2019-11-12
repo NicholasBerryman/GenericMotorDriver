@@ -1,5 +1,9 @@
 #pragma once
 
+#ifndef PWMRANGE
+#define PWMRANGE 255
+#endif
+
 class MotorController{
   public:
     /**
