@@ -1,5 +1,5 @@
 # GenericMotorDriver
-Generic arduino library for controlling brushless DC motor drivers.
+Generic arduino library for controlling brushed DC motor drivers.
 
 ## Usage
 Create a `MotorController` object using one of two constructors based on the type of motor driver you're using:  
