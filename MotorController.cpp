@@ -1,5 +1,5 @@
-#include "MotorController.h"
 #include <Arduino.h>
+#include "MotorController.h"
 
 MotorController::MotorController(unsigned int forwardsPin, unsigned int backwardsPin, bool pin1IsDirection){
   this->forwardPin = forwardsPin;
