@@ -7,6 +7,7 @@ MotorController::MotorController(unsigned int forwardsPin, unsigned int backward
   pinMode(forwardPin, OUTPUT);
   pinMode(backwardPin, OUTPUT);
   pin1Direction = pin1IsDirection;
+  enabledRampRate = false;
 }
 
 MotorController::MotorController(unsigned int forwardPin, unsigned int backwardsPin, unsigned int enablePin) 
