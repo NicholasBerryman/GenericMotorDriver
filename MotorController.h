@@ -29,7 +29,7 @@ class MotorController{
     bool pin1Direction;
     int enablePin = -1;
     double setValue = 0.0;
-    bool enabledRampRate;
+    bool enabledRampRate = false;
     double rampRate = 1.0;
     long timeAtLastSet = 0;
 };
