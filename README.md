@@ -4,7 +4,7 @@ Generic arduino library for controlling brushed DC motor drivers.
 ## Usage
 Create a `MotorController` object using one of two constructors based on the type of motor driver you're using:  
 If your motor driver has an enable pin then use the `MotorController(unsigned int forwardsPin, unsigned int backwardsPin, unsigned int enablePin)` constructor.  
-If your motor driver does not have an enable pin then use the `MotorController(unsigned int forwardsPin, unsigned int backwardsPin)`  constructor.  
+If your motor driver does not have an enable pin then use the `MotorController(unsigned int pin1, unsigned int pin2, bool pin1isDirection)`  constructor. If your motor uses a direction control pin then the third paramater should be `true` and the `pin1` should be the direction pin, otherwise, where your motor has one pin for forward speed and a second pin for reverse speed, the third parameter should be `false`, `pin1` should be the forward pin, and `pin2` should be the reverse pin.
 Once this object has been created the motor can be controlled through the `MotorController.set(double setVal)` method. 
 This method expects a floating point number between -1 and 1 with 1 being full power forwards, -1 being full power backwards, and 0 being off.  
   
