@@ -88,7 +88,8 @@ void MotorController::set(double powerPercent){
       digitalWrite(forwardPin,0);
       digitalWrite(backwardPin,0);
     }
-    if (enablePin >= 0) analogWrite(enablePin, PWMRANGE*setValue);
+    double setVal = PWMRANGE*setValue;
+    if (enablePin >= 0) analogWrite(enablePin, abs(setVal));
   }
   timeAtLastSet = millis();
 }
