@@ -10,10 +10,10 @@ MotorController::MotorController(unsigned int forwardsPin, unsigned int backward
   enabledRampRate = false;
 }
 
-MotorController::MotorController(unsigned int forwardPin, unsigned int backwardsPin, unsigned int enablePin) 
+MotorController::MotorController(unsigned int forwardPin, unsigned int backwardsPin, int enablePin) 
   : MotorController::MotorController(forwardPin,backwardsPin, false)
 {
-  this->enablePin = enablePin;
+  this->enablePin = (unsigned int)enablePin;
   pinMode(enablePin, OUTPUT);
 }
 
@@ -93,6 +93,3 @@ void MotorController::set(double powerPercent){
   }
   timeAtLastSet = millis();
 }
-
-
-
